@@ -184,53 +184,143 @@ const LandingPageView2 = () => {
         background: `linear-gradient(to right, ${artistPage.gradientStart}, ${artistPage.gradientMid},${artistPage.gradientEnd})`
       }}
     >
-      {/* Navbar Section */}
-      <nav id="navbar" className="fixed top-0 w-full z-50">
-        <Card className="rounded-none shadow-sm">
-          <CardContent className="max-w-6xl mx-auto px-4 py-4">
+       {/* Navbar Section */}
+       <nav id="navbar" className="fixed top-0 w-full z-50">
+        <Card className="rounded-none shadow-sm bg-white/80 backdrop-blur-md border-none">
+          <CardContent className="max-w-6xl mx-auto px-4 py-3">
             <div className="flex justify-between items-center">
-              <h2 className="font-semibold text-xl">@{username}</h2>
-              <Tabs>
+              <h2 className="font-bold text-2xl tracking-tight text-gray-900">@{username}</h2>
+              
+              {/* Desktop Navigation */}
+              <Tabs className="hidden md:block">
                 <TabsList className="hidden md:flex">
                   <TabsTrigger
                     value="performances"
                     onClick={() => scrollToSection('performances')}
+                    className="hover:bg-white/20 transition-all duration-300 flex items-center gap-2"
                   >
+                    <Music className="w-4 h-4" />
                     Performances
                   </TabsTrigger>
                   <TabsTrigger
                     value="videos"
                     onClick={() => scrollToSection('videos')}
+                    className="hover:bg-white/20 transition-all duration-300 flex items-center gap-2"
                   >
+                    <Video className="w-4 h-4" />
                     Videos
                   </TabsTrigger>
                   <TabsTrigger
                     value="songsSale"
                     onClick={() => scrollToSection('songsSale')}
+                    className="hover:bg-white/20 transition-all duration-300 flex items-center gap-2"
                   >
+                    <Music className="w-4 h-4" />
                     Songs Sale
                   </TabsTrigger>
                   <TabsTrigger
                     value="merchandise"
                     onClick={() => scrollToSection('merchandise')}
+                    className="hover:bg-white/20 transition-all duration-300 flex items-center gap-2"
                   >
+                    <ShoppingBag className="w-4 h-4" />
                     Merchandise
                   </TabsTrigger>
                   <TabsTrigger
                     value="fanMessages"
                     onClick={() => scrollToSection('messages')}
+                    className="hover:bg-white/20 transition-all duration-300 flex items-center gap-2"
                   >
+                    <MessageCircle className="w-4 h-4" />
                     Messages
                   </TabsTrigger>
                   <TabsTrigger
                     value="support"
                     onClick={() => scrollToSection('support')}
+                    className="hover:bg-white/20 transition-all duration-300 flex items-center gap-2"
                   >
+                    <Heart className="w-4 h-4" />
                     Support
                   </TabsTrigger>
                 </TabsList>
               </Tabs>
+
+              {/* Mobile Menu Button */}
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="md:hidden"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                <Menu className="h-6 w-6" />
+              </Button>
             </div>
+
+            {/* Mobile Navigation */}
+            {isMobileMenuOpen && (
+              <div className="md:hidden mt-4 pb-2 space-y-2">
+                <button
+                  onClick={() => {
+                    scrollToSection('performances');
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full text-left px-4 py-2 text-sm hover:bg-white/20 transition-all duration-300 rounded-md flex items-center gap-3"
+                >
+                  <Music className="w-4 h-4" />
+                  Performances
+                </button>
+                <button
+                  onClick={() => {
+                    scrollToSection('videos');
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full text-left px-4 py-2 text-sm hover:bg-white/20 transition-all duration-300 rounded-md flex items-center gap-3"
+                >
+                  <Video className="w-4 h-4" />
+                  Videos
+                </button>
+                <button
+                  onClick={() => {
+                    scrollToSection('songsSale');
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full text-left px-4 py-2 text-sm hover:bg-white/20 transition-all duration-300 rounded-md flex items-center gap-3"
+                >
+                  <Music className="w-4 h-4" />
+                  Songs Sale
+                </button>
+                <button
+                  onClick={() => {
+                    scrollToSection('merchandise');
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full text-left px-4 py-2 text-sm hover:bg-white/20 transition-all duration-300 rounded-md flex items-center gap-3"
+                >
+                  <ShoppingBag className="w-4 h-4" />
+                  Merchandise
+                </button>
+                <button
+                  onClick={() => {
+                    scrollToSection('messages');
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full text-left px-4 py-2 text-sm hover:bg-white/20 transition-all duration-300 rounded-md flex items-center gap-3"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  Messages
+                </button>
+                <button
+                  onClick={() => {
+                    scrollToSection('support');
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full text-left px-4 py-2 text-sm hover:bg-white/20 transition-all duration-300 rounded-md flex items-center gap-3"
+                >
+                  <Heart className="w-4 h-4" />
+                  Support
+                </button>
+              </div>
+            )}
           </CardContent>
         </Card>
       </nav>
